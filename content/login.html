@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" contentwidth="device.width", initial-scale="1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/4087c3435f.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="scripts/login.js"></script>
+  </head>
+  <body>
+    <div class="logo-box">
+      <img src="img/img3.png" class="small-logo">
+    </div>
+    <div class="container">
+      <div class="first-content" id="firstContent">
+          <div class="first-column">
+            <img src="img/img10.png" class="logo">
+          </div><!-- first column -->
+          <div class="second-column">
+            <h2 class="title title-second">Bem vindo.</h2>
+            <p class="description">Insira seu e-mail e senha para fazer o login.</p>
+            <p class="wrong-password" id="wrongPassword">E-mail e/ou senha errados.</p>
+              <form class="form" method="POST">
+                <input type="email" placeholder="Email" id="userName" value="">
+                <input type="password" placeholder="Password" id="password" value="">
+                <button class="btn" type="button" onclick="makePostRequest()"> Entrar </button>
+              </form>
+          </div><!-- second column -->
+      </div><!-- first content -->
+      <div class="second-content" id="secondContent">
+        
+        <div class="small-box" id="smallBox" style="display: none">
+          <i class="fas fa-window-close" onclick="toggleSmallBox()"></i>
+          <button class="second-btn" id="editButton" onclick="toggleIncludeBox()"><i class="fas fa-edit"></i>&nbsp;Editar</button>
+          <button class="second-btn" id="deleteButton" onclick="deleteButton()"><i class="fas fa-trash-alt"></i>&nbsp;Deletar</button>
+        </div><!-- small box -->
+        <div class="confirmation-box" id="confirmationBox" style="display: none">
+          <p>Está opção irá excluir o contato, deseja continuar?</p>
+          <div class="black-screen"></div>
+          <button class="second-btn" onclick="deletePerson()">Sim</button>
+          <button class="second-btn" onclick="toggleConfirmationBox()">Não</button>
+        </div><!-- confirmation box -->
+        <div class="include-box" id="includeBox" style="display: none">
+          <div class="include-box-inside">
+            <i class="fas fa-window-close" onclick="toggleIncludeBox()"></i>
+            <form class="form" method="POST" form action="#" onsubmit="includeConfirm();return false">
+              <p class="second-description">Nome: </p>
+              <input type="text" placeholder="ex: Joao" id="newName" value="" required minlength="1" maxlength="10">
+              <p class="second-description">Sobrenome: </p>
+              <input type="text" placeholder="ex: Silva" id="newSurname" value="" required minlength="1" maxlength="10">
+              <p class="second-description">Peso (em kgs): </p>
+              <input type="height" placeholder="ex: 50" id="newWeigth" value="" min="1" max="300" step="1" pattern="[0-9]{2}">
+              <p class="second-description">Altura (em metros): </p>
+              <input type="weigth" placeholder="ex: 1.65" id="newHeight" value="" min="1" max="3" step=".1" pattern="[0-9]{1,2}.[0-9]{1,2}">
+              <p class="second-description">Data de nascimento: </p>
+              <input type="date" id="newDob" max="2020-01-02" min="1929-12-31" >
+              <button class="second-btn"><i class="fas fa-plus-square"></i>&nbsp;Incluir</button>
+            </form>
+          </div>
+        </div><!-- include box -->
+        <div style="height:90%;width:95%;overflow:auto;padding:2%">
+          <div class="menu">
+            <button class="second-btn" onclick="toggleIncludeBox()"><i class="fas fa-plus-square"></i>&nbsp;Incluir</button>
+          </div>
+          <div class="grid" id="grid">
+          </div><!-- grid -->
+        </div>
+      </div><!-- second content -->
+    </div><!-- container -->
+  </body>
+</html>
