@@ -178,15 +178,13 @@ async function includeConfirm(){
 	  headers: {'Authorization': authKey}
 	};
 	
-
-
 	if(activeId === null){
 		var params = {
 			"name": newName,
 			"surname": newSurname,
 			"dateOfBirth": newDob,
-			"weigth": newWeigth,
-			"height": newHeight
+			"weigth": String(newWeigth),
+			"height": String(newHeight)
 		}
 
 		let res = await axios.post('http://test.leadsoft.inf.br:5353/api/v1/People/', params, config);
@@ -200,8 +198,8 @@ async function includeConfirm(){
 			"name": newName,
 			"surname": newSurname,
 			"dateOfBirth": newDob,
-			"weigth": newWeigth,
-			"height": newHeight
+			"weigth": String(newWeigth),
+			"height": String(newHeight)
 		}
 
 
